@@ -2,7 +2,10 @@ package com.example.calculadora;
 
 public class Calculadora {
 
-    private double can1, canM ;
+    private double can1;
+    private double canM;
+
+
 
     public Calculadora(){
 

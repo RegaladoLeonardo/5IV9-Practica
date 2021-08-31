@@ -8,18 +8,40 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView Resultados;
+    private TextView Resultados ;
     String n1;
     double can1, canM,res;
     Dividir op = new Dividir();
+    Sumar ops = new Sumar();
+    Restar opr = new Restar();
+    Multiplicar opm = new Multiplicar();
+    Potencia opp = new Potencia();
+    Raiz opz = new Raiz();
+
+    String option;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //if(String.valueOf(R.id.Resultado) == "0"){
+        //    Resultados.setText("0");
+        //}else{
         Resultados = findViewById(R.id.Resultado);
+        //}
 
+
+
+    }
+
+    public void n1(View view){
+
+
+        n1= Resultados.getText().toString() + "1";
+
+        Resultados.setText(n1);
 
     }
 
@@ -102,39 +124,232 @@ public class MainActivity extends AppCompatActivity {
 
     public void dividir(View view) {
 
-        op.setCan1(Double.parseDouble(Resultados.getText().toString() ));
+
+        if(Resultados.getText().toString().equals("")) {
+
+            Resultados.setText("0");
+            op.setCan1(Double.parseDouble(Resultados.getText().toString()));
+
+            option = "/";
+
+            n1 = "";
+            Resultados.setText(n1);
+        }else{
+
+            op.setCan1(Double.parseDouble(Resultados.getText().toString()));
+
+            option = "/";
+
+            n1 = "";
+            Resultados.setText(n1);
+        }
 
 
-        n1= "";
-        Resultados.setText(n1);
-        /**
-        can1 = Double.parseDouble(Resultados.getText().toString() );
-
-        n1= "";
-
-        Resultados.setText(n1);
-        **/
     }
+
+
+    public void Sumar(View view){
+
+        if(Resultados.getText().toString().equals("")) {
+
+            Resultados.setText("0");
+
+            ops.setCan1(Double.parseDouble(Resultados.getText().toString()));
+
+            option = "+";
+
+            n1 = "";
+            Resultados.setText(n1);
+        }else{
+
+            ops.setCan1(Double.parseDouble(Resultados.getText().toString()));
+
+            option = "+";
+
+            n1 = "";
+            Resultados.setText(n1);
+
+        }
+
+
+    }
+
+    public void Potencia(View view){
+
+        if(Resultados.getText().toString().equals("")) {
+
+            Resultados.setText("0");
+
+            opp.setCan1(Double.parseDouble(Resultados.getText().toString()));
+
+            option = "^";
+
+            n1 = "";
+            Resultados.setText(n1);
+        }else{
+
+            opp.setCan1(Double.parseDouble(Resultados.getText().toString()));
+
+            option = "^";
+
+            n1 = "";
+            Resultados.setText(n1);
+
+        }
+
+
+    }
+
+
+    public void Raiz(View view){
+
+        if(Resultados.getText().toString().equals("")) {
+
+            Resultados.setText("0");
+
+            opz.setCan1(Double.parseDouble(Resultados.getText().toString()));
+
+            option = "r";
+
+            n1 = "";
+            Resultados.setText(n1);
+        }else{
+
+            opz.setCan1(Double.parseDouble(Resultados.getText().toString()));
+
+            option = "r";
+
+            n1 = "";
+            Resultados.setText(n1);
+
+        }
+
+
+    }
+
+    public void Restar(View view){
+
+        if(Resultados.getText().toString().equals("")) {
+
+            Resultados.setText("0");
+            opr.setCan1(Double.parseDouble(Resultados.getText().toString() ));
+
+            option = "-";
+
+            n1= "";
+            Resultados.setText(n1);
+        }else{
+
+            opr.setCan1(Double.parseDouble(Resultados.getText().toString() ));
+
+            option = "-";
+
+            n1= "";
+            Resultados.setText(n1);
+        }
+
+
+    }
+
+    public void Multiplicar(View view){
+
+        if(Resultados.getText().toString().equals("")) {
+
+            Resultados.setText("0");
+
+            opm.setCan1(Double.parseDouble(Resultados.getText().toString() ));
+
+            option = "*";
+
+            n1= "";
+            Resultados.setText(n1);
+
+        }else{
+
+            opm.setCan1(Double.parseDouble(Resultados.getText().toString() ));
+
+            option = "*";
+
+            n1= "";
+            Resultados.setText(n1);
+
+        }
+
+        /**
+        opm.setCan1(Double.parseDouble(Resultados.getText().toString() ));
+
+        option = "*";
+
+        n1= "";
+        Resultados.setText(n1);
+         **/
+
+    }
+
+
+    public void Borrar( View view){
+
+
+        if(Resultados.getText().toString().equals("")) {
+
+            Resultados.setText("0");
+
+            n1 = Resultados.getText().toString();
+            n1 = n1.substring(0, n1.length() - 1);
+
+            Resultados.setText(n1);
+        }else{
+
+            n1 = Resultados.getText().toString();
+            n1 = n1.substring(0, n1.length() - 1);
+
+            Resultados.setText(n1);
+
+        }
+    }
+
+
+
 
     public void resultado(View view) {
 
-        op.setCanM(Double.parseDouble(Resultados.getText().toString()));
 
 
-        Resultados.setText( String.valueOf(op.operacion()));
+        if(Resultados.getText().toString().equals("")) {
 
+            Resultados.setText("0");
 
-        /**
-        canM = Double.parseDouble(Resultados.getText().toString());
+        }else{
+            if (option.equals("/")) {
 
-        res = can1 / canM ;
-        try {
-            Resultados.setText( String.valueOf(res));
-        }catch (Exception e ){
-            System.out.println(e.getMessage());
-            Resultados.setText(e.getMessage());
+                op.setCanM(Double.parseDouble(Resultados.getText().toString()));
+
+                Resultados.setText(String.valueOf(op.operacion()));
+
+            } else if (option.equals("+")) {
+
+                ops.setCanM(Double.parseDouble(Resultados.getText().toString()));
+                Resultados.setText(String.valueOf(ops.operacionS()));
+
+            } else if (option.equals("-")) {
+
+                opr.setCanM(Double.parseDouble(Resultados.getText().toString()));
+                Resultados.setText(String.valueOf(opr.operacionr()));
+
+            } else if (option.equals("*")) {
+
+                opm.setCanM(Double.parseDouble(Resultados.getText().toString()));
+                Resultados.setText(String.valueOf(opm.operacionm()));
+
+            }else if(option.equals("^")){
+                opp.setCanM(Double.parseDouble(Resultados.getText().toString()));
+                Resultados.setText(String.valueOf(opp.operacionp()));
+
+            }else if(option.equals("r")){
+
+                Resultados.setText(String.valueOf(opz.operacionz()));
+            }
         }
-        **/
 
     }
 

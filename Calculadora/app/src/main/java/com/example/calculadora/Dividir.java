@@ -13,10 +13,12 @@ public class Dividir extends Calculadora {
     }
 
     public void setResultado(double resultado) {
+
         this.resultado = resultado;
     }
 
     public double getResultado() {
+
         return resultado;
     }
 
